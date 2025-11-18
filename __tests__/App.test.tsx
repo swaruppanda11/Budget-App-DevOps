@@ -1,13 +1,20 @@
-/**
- * @format
- */
-
 import React from 'react';
-import ReactTestRenderer from 'react-test-renderer';
+import {render} from '@testing-library/react-native';
 import App from '../App';
 
-test('renders correctly', async () => {
-  await ReactTestRenderer.act(() => {
-    ReactTestRenderer.create(<App />);
+describe('Budget App', () => {
+  it('renders correctly', () => {
+    const {getByText} = render(<App />);
+    expect(getByText('💰 Budget Tracker')).toBeTruthy();
+  });
+
+  it('displays total budget', () => {
+    const {getByText} = render(<App />);
+    expect(getByText(/Total: \$/)).toBeTruthy();
+  });
+
+  it('shows empty state message', () => {
+    const {getByText} = render(<App />);
+    expect(getByText('No budgets yet. Add one above!')).toBeTruthy();
   });
 });
