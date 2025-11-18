@@ -17,7 +17,7 @@ interface Budget {
   date: string;
 }
 
-function App(): JSX.Element {
+function App(): React.JSX.Element {
   const [category, setCategory] = useState('');
   const [amount, setAmount] = useState('');
   const [budgets, setBudgets] = useState<Budget[]>([]);
